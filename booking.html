@@ -1,32 +1,20 @@
 <!DOCTYPE html>
-<!-- HTML5 document declaration -->
 <html lang="en">
 <head>
-    <!-- Character encoding -->
     <meta charset="UTF-8">
-    <!-- Responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO description -->
     <meta name="description" content="Book your dream vacation at Paradise Island with our easy-to-use form.">
-    <!-- SEO keywords -->
     <meta name="keywords" content="Paradise Island, booking, vacation, resorts, travel">
-    <!-- Author -->
     <meta name="author" content="Vividhan">
-    <!-- Page title -->
     <title>Book Now - Paradise Island</title>
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="../Multimedia/paradise-icon.png">
-    <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="animate__animated animate__fadeInDown">
-        <!-- Navigation -->
+    
+    <header class="animate-on-scroll" data-animation="animate__fadeInDown">
         <nav class="navbar">
             <div class="logo"><a href="index.html">Paradise Island</a></div>
             <ul>
@@ -36,22 +24,21 @@
                 <li><a href="booking.html">Book Now</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </header>
 
-    <!-- Main content -->
     <main>
-        <!-- Booking hero -->
         <section class="booking-hero container">
-            <h1>Book Your Stay</h1>
-            <p>Plan your perfect tropical getaway with ease.</p>
+            <h1 class="animate-on-scroll" data-animation="animate__fadeInDown">Book Your Stay</h1>
+            <p class="animate-on-scroll" data-animation="animate__fadeInUp">Plan your perfect tropical getaway with ease.</p>
         </section>
 
-        <!-- Booking form -->
         <section class="booking container">
             <h2>Booking Form</h2>
-            <form action="success.html" method="post" class="booking-form">
-                <!-- Personal details fieldset -->
+            <form action="success.html" method="post" class="booking-form animate-on-scroll" data-animation="animate__fadeInUp">
                 <fieldset>
                     <legend>Personal Details</legend>
                     <label for="name">Full Name:</label>
@@ -63,15 +50,18 @@
                     <label for="dob">Date of Birth:</label>
                     <input id="dob" name="dob" type="date" required min="1950-01-01" max="2007-12-31">
                 </fieldset>
-                <!-- Trip details fieldset -->
+                
                 <fieldset>
                     <legend>Trip Details</legend>
                     <label for="arrival">Arrival Date:</label>
                     <input id="arrival" name="arrival" type="datetime-local" required>
+                    
                     <label for="departure">Departure Date:</label>
                     <input id="departure" name="departure" type="datetime-local" required>
+                    
                     <label for="travelers">Number of Travelers:</label>
                     <input id="travelers" name="travelers" type="number" placeholder="Enter number of travelers" min="1" max="20" required>
+                    
                     <label for="accommodation">Accommodation Type:</label>
                     <select id="accommodation" name="accommodation">
                         <optgroup label="Hotel">
@@ -85,6 +75,7 @@
                             <option value="villa" selected>Villa</option>
                         </optgroup>
                     </select>
+                    
                     <label for="activities">Preferred Activities:</label>
                     <select id="activities" name="activities" multiple>
                         <option value="snorkeling">Snorkeling</option>
@@ -93,60 +84,61 @@
                         <option value="kayaking">Kayaking</option>
                     </select>
                 </fieldset>
-                <!-- Submit button -->
+                
                 <button type="submit" class="btn">Submit Booking</button>
-                <!-- Reset button -->
                 <button type="reset" class="btn">Reset Form</button>
             </form>
         </section>
 
-        <!-- Expenses table -->
         <section class="expenses container">
             <h2>Estimated Costs</h2>
-            <table class="expense-table">
+            <table class="expense-table animate-on-scroll" data-animation="animate__fadeInUp">
                 <caption>Weekly Expense Breakdown</caption>
-                <tr>
-                    <th>Category</th>
-                    <th>Item</th>
-                    <th>Cost per Day</th>
-                    <th>Total (7 Days)</th>
-                </tr>
-                <tr>
-                    <td>Accommodation</td>
-                    <td>Hotel</td>
-                    <td>$150</td>
-                    <td>$1,050</td>
-                </tr>
-                <tr>
-                    <td>Accommodation</td>
-                    <td>Resort</td>
-                    <td>$200</td>
-                    <td>$1,400</td>
-                </tr>
-                <tr>
-                    <td>Meals</td>
-                    <td>Restaurants</td>
-                    <td>$40</td>
-                    <td>$280</td>
-                </tr>
-                <tr>
-                    <td>Activities</td>
-                    <td>Snorkeling</td>
-                    <td>$30</td>
-                    <td>$210</td>
-                </tr>
-                <tr>
-                    <td>Miscellaneous</td>
-                    <td>Other</td>
-                    <td>$15</td>
-                    <td>$105</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Item</th>
+                        <th>Cost per Day</th>
+                        <th>Total (7 Days)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Accommodation</td>
+                        <td>Hotel</td>
+                        <td>$150</td>
+                        <td>$1,050</td>
+                    </tr>
+                    <tr>
+                        <td>Accommodation</td>
+                        <td>Resort</td>
+                        <td>$200</td>
+                        <td>$1,400</td>
+                    </tr>
+                    <tr>
+                        <td>Meals</td>
+                        <td>Restaurants</td>
+                        <td>$40</td>
+                        <td>$280</td>
+                    </tr>
+                    <tr>
+                        <td>Activities</td>
+                        <td>Snorkeling</td>
+                        <td>$30</td>
+                        <td>$210</td>
+                    </tr>
+                    <tr>
+                        <td>Miscellaneous</td>
+                        <td>Other</td>
+                        <td>$15</td>
+                        <td>$105</td>
+                    </tr>
+                </tbody>
             </table>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="animate__animated animate__fadeInUp">
+    <footer class="animate-on-scroll" data-animation="animate__fadeInUp">
         <div class="footer-container">
             <div class="footer-section">
                 <h4>About</h4>
@@ -159,9 +151,9 @@
             <div class="footer-section">
                 <h4>Social</h4>
                 <ul>
-                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i> Facebook</a></li>
-                    <li><a href="#"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
-                    <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#!" aria-label="Visit our Facebook page"><i class="fa-brands fa-facebook-f"></i> Facebook</a></li>
+                    <li><a href="#!" aria-label="Visit our Twitter page"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#!" aria-label="Visit our Instagram page"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -177,6 +169,8 @@
             <p>© 2025 Paradise Island. All rights reserved.</p>
         </div>
     </footer>
-    <div class="ball"></div>
+
+    <div class="ball" aria-hidden="true"></div>
+    <script src="script.js"></script>
 </body>
 </html>
