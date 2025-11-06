@@ -1,36 +1,22 @@
 <!DOCTYPE html>
-<!-- Declares the document type as HTML5 -->
 <html lang="en">
 <head>
-    <!-- Sets character encoding -->
     <meta charset="UTF-8">
-    <!-- Ensures responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Meta description for SEO -->
     <meta name="description" content="Learn about Paradise Island's history, mission, and dedicated team.">
-    <!-- Keywords for SEO -->
     <meta name="keywords" content="Paradise Island, about, history, mission, team, tropical">
-    <!-- Author metadata -->
     <meta name="author" content="Vividhan">
-    <!-- Page title -->
     <title>About Paradise Island</title>
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="../Multimedia/paradise-icon.png">
-    <!-- External stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!-- Animate.css for animations -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 <body>
-    <!-- Header section -->
-    <header class="animate__animated animate__fadeInDown">
-        <!-- Navigation bar -->
+    
+    <header class="animate-on-scroll" data-animation="animate__fadeInDown">
         <nav class="navbar">
-            <!-- Logo -->
             <div class="logo"><a href="index.html">Paradise Island</a></div>
-            <!-- Navigation links -->
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
@@ -38,91 +24,78 @@
                 <li><a href="booking.html">Book Now</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </header>
 
-    <!-- Main content -->
     <main>
-        <!-- About hero section -->
         <section class="about-hero container">
-            <!-- Main heading -->
-            <h1>About Paradise Island</h1>
-            <!-- Subheading -->
-            <p>Uncover the story behind our tropical paradise and why it’s the perfect destination.</p>
+            <h1 class="animate-on-scroll" data-animation="animate__fadeInDown">About Paradise Island</h1>
+            <p class="animate-on-scroll" data-animation="animate__fadeInUp">Uncover the story behind our tropical paradise and why it’s the perfect destination.</p>
         </section>
 
-        <!-- History section -->
         <section class="history container">
-            <!-- Section heading -->
             <h2>Our History</h2>
-            <!-- History image -->
-            <img src="../Multimedia/island-history.jpg" alt="Island History" class="section-img">
-            <!-- History description -->
-            <p>Paradise Island was established in 1975 as a small fishing village that evolved into a premier tourist destination.</p>
-            <p>Through sustainable development, we’ve preserved our natural beauty while offering modern amenities.</p>
-            <p>Today, we welcome travelers from around the globe to experience our unique blend of culture and nature.</p>
+            <img src="../Multimedia/island-history.jpg" alt="Island History" class="section-img animate-on-scroll" data-animation="animate__fadeIn" loading="lazy">
+            <div class="animate-on-scroll" data-animation="animate__fadeInUp">
+                <p>Paradise Island was established in 1975 as a small fishing village that evolved into a premier tourist destination.</p>
+                <p>Through sustainable development, we’ve preserved our natural beauty while offering modern amenities.</p>
+                <p>Today, we welcome travelers from around the globe to experience our unique blend of culture and nature.</p>
+            </div>
         </section>
 
-        <!-- Mission section -->
         <section class="mission container">
-            <!-- Section heading -->
             <h2>Our Mission</h2>
-            <!-- Mission statements -->
-            <p>We are committed to delivering unforgettable experiences while protecting our island’s environment.</p>
-            <p>Our eco-friendly resorts and activities ensure a sustainable vacation for all guests.</p>
-            <p>We aim to foster cultural appreciation and provide exceptional hospitality.</p>
+            <div class="animate-on-scroll" data-animation="animate__fadeInUp">
+                <p>We are committed to delivering unforgettable experiences while protecting our island’s environment.</p>
+                <p>Our eco-friendly resorts and activities ensure a sustainable vacation for all guests.</p>
+                <p>We aim to foster cultural appreciation and provide exceptional hospitality.</p>
+            </div>
         </section>
 
-        <!-- Team section -->
         <section class="team container">
-            <!-- Section heading -->
             <h2>Meet Our Team</h2>
-            <!-- Grid for team members -->
             <div class="team-grid">
-                <!-- Team member 1 -->
-                <div class="team-member">
-                    <img src="../Multimedia/team1.jpg" alt="Team Member 1">
+                <div class="team-member animate-on-scroll" data-animation="animate__fadeInUp">
+                    <img src="../Multimedia/team1.jpg" alt="Team Member 1" loading="lazy">
                     <h3>Jane Doe</h3>
                     <p>Resort Manager</p>
                 </div>
-                <!-- Team member 2 -->
-                <div class="team-member">
-                    <img src="../Multimedia/team2.jpg" alt="Team Member 2">
+                <div class="team-member animate-on-scroll" data-animation="animate__fadeInUp">
+                    <img src="../Multimedia/team2.jpg" alt="Team Member 2" loading="lazy">
                     <h3>John Smith</h3>
                     <p>Activities Coordinator</p>
                 </div>
-                <!-- Team member 3 -->
-                <div class="team-member">
-                    <img src="../Multimedia/team3.jpg" alt="Team Member 3">
+                <div class="team-member animate-on-scroll" data-animation="animate__fadeInUp">
+                    <img src="../Multimedia/team3.jpg" alt="Team Member 3" loading="lazy">
                     <h3>Emily Brown</h3>
                     <p>Guest Relations</p>
                 </div>
             </div>
         </section>
 
-        <!-- FAQ section -->
         <section class="faq container">
-            <!-- Section heading -->
             <h2>Frequently Asked Questions</h2>
-            <!-- FAQ items -->
-            <div class="faq-item">
-                <h3>What is the best time to visit?</h3>
-                <p>Year-round, but spring and fall offer ideal weather.</p>
-            </div>
-            <div class="faq-item">
-                <h3>Are activities family-friendly?</h3>
-                <p>Yes, we offer activities for all ages!</p>
-            </div>
-            <div class="faq-item">
-                <h3>Is the island accessible?</h3>
-                <p>Our resorts and activities are designed with accessibility in mind.</p>
+            <div class="animate-on-scroll" data-animation="animate__fadeInUp">
+                <div class="faq-item">
+                    <h3>What is the best time to visit?</h3>
+                    <p>Year-round, but spring and fall offer ideal weather.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Are activities family-friendly?</h3>
+                    <p>Yes, we offer activities for all ages!</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is the island accessible?</h3>
+                    <p>Our resorts and activities are designed with accessibility in mind.</p>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="animate__animated animate__fadeInUp">
-        <!-- Footer content -->
+    <footer class="animate-on-scroll" data-animation="animate__fadeInUp">
         <div class="footer-container">
             <div class="footer-section">
                 <h4>About</h4>
@@ -135,9 +108,9 @@
             <div class="footer-section">
                 <h4>Social</h4>
                 <ul>
-                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i> Facebook</a></li>
-                    <li><a href="#"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
-                    <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#!" aria-label="Visit our Facebook page"><i class="fa-brands fa-facebook-f"></i> Facebook</a></li>
+                    <li><a href="#!" aria-label="Visit our Twitter page"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#!" aria-label="Visit our Instagram page"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -149,12 +122,12 @@
                 </ul>
             </div>
         </div>
-        <!-- Copyright -->
         <div class="footer-bottom">
             <p>© 2025 Paradise Island. All rights reserved.</p>
         </div>
     </footer>
-    <!-- Decorative ball -->
-    <div class="ball"></div>
+
+    <div class="ball" aria-hidden="true"></div>
+    <script src="script.js"></script>
 </body>
 </html>
