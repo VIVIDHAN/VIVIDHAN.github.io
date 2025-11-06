@@ -1,1477 +1,745 @@
-/* Reset default browser styles for consistency across browsers */
+/* Professional Stylesheet for Paradise Island
+    Author: Vividhan (Refactored by Gemini)
+    
+    -------------------------------------------
+    TABLE OF CONTENTS
+    -------------------------------------------
+    1.  :root (CSS Variables / "Pro" Theme)
+    2.  Global Resets & Base Styles
+    3.  Reusable Classes (Container, Button)
+    4.  Header & Navigation (with Mobile Toggle)
+    5.  Hero Sections
+    6.  Page-Specific Sections (Overview, Activities, etc.)
+    7.  Forms & Tables
+    8.  Footer
+    9.  Animations & Effects (Scroll, Ball)
+    10. Responsive Media Queries
+    -------------------------------------------
+*/
+
+/* * 1. :root (CSS Variables / "Pro" Theme)
+ * -------------------------------------------
+ * Define all theme colors and fonts here for easy maintenance.
+ */
+:root {
+    /* Fonts */
+    --font-primary: "Montserrat", "Roboto", Arial, sans-serif;
+    
+    /* Primary Colors */
+    --color-primary: #01579b;         /* Dark Blue (Headings) */
+    --color-primary-light: #0288d1;    /* Mid Blue (Links, Icons) */
+    --color-primary-lighter: #b2ebf2;   /* Light Blue (Accents) */
+    --color-primary-lightest: #e0f7fa; /* Pale Blue (Backgrounds) */
+
+    /* Secondary Colors */
+    --color-secondary: #ffca28;      /* Yellow (Buttons) */
+    --color-secondary-dark: #ffb300;   /* Darker Yellow (Button Hover) */
+    
+    /* Text Colors */
+    --color-text-dark: #1a3c34;        /* Dark Green/Black (Body Text) */
+    --color-text-light: #ffffff;       /* White (on dark backgrounds) */
+    
+    /* Background Colors */
+    --color-bg-light: #ffffff;
+    --color-bg-gradient: linear-gradient(to bottom, var(--color-primary-lightest), var(--color-bg-light));
+    --color-bg-glass: rgba(255, 255, 255, 0.9);
+    --color-bg-glass-light: rgba(224, 247, 250, 0.9);
+    
+    /* Shadows */
+    --shadow-light: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0px 6px 20px rgba(0, 0, 0, 0.15);
+    --shadow-dark: 0px 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+
+/* * 2. Global Resets & Base Styles
+ * -------------------------------------------
+ */
 html {
-    /* Sets base font size for scalability */
     font-size: 100%;
-    /* Prevents horizontal scrolling */
     overflow-x: hidden;
+    scroll-behavior: smooth; /* Adds smooth scrolling for anchor links */
 }
 body {
-    /* Removes default margins */
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    /* Removes default padding */
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    /* Sets primary font stack */
-    font-family: "Montserrat", "Roboto", Arial, sans-serif;
-    /* Sets base font size */
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-primary);
     font-size: 16px;
-    /* Sets line height for readability */
     line-height: 1.8;
-    /* Sets default text color */
-    color: #1a3c34;
-    /* Sets tropical-inspired background gradient */
-    background-image: linear-gradient(to bottom, #e0f7fa, #ffffff);
-    /* Ensures full viewport height */
+    color: var(--color-text-dark);
+    background-image: var(--color-bg-gradient);
     min-height: 100vh;
 }
 *, *::before, *::after {
-    /* Applies border-box model for consistent sizing */
     box-sizing: border-box;
 }
 a {
-    /* Removes default underline */
-    text-decoration-line: none;
-    /* Sets link color to tropical blue */
-    color: #0288d1;
-    /* Adds smooth transition for color changes */
-    transition-property: color;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
+    text-decoration: none;
+    color: var(--color-primary-light);
+    transition: color 0.3s ease-in-out;
 }
 a:hover {
-    /* Changes link color on hover */
-    color: #03a9f4;
+    color: var(--color-primary);
 }
 img {
-    /* Ensures images don’t overflow container */
     max-width: 100%;
-    /* Maintains aspect ratio */
     height: auto;
-    /* Displays images as block elements */
     display: block;
-    /* Adds subtle transition for image effects */
-    transition-property: transform, opacity;
-    transition-duration: 0.3s;
-    transition-timing-function: ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+/* Base Typography */
+h1, h2, h3, h4 {
+    font-family: var(--font-primary);
+    margin: 0 0 25px 0;
+}
+h1 {
+    font-size: clamp(2.5rem, 5vw, 3.75rem); /* Responsive font size */
+    font-weight: 900;
+    color: var(--color-text-light);
+}
+h2 {
+    font-size: clamp(2rem, 4vw, 2.625rem); /* 42px */
+    font-weight: 700;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 50px;
+}
+h3 {
+    font-size: 1.625rem; /* 26px */
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
+h4 {
+    font-size: 1.25rem; /* 20px */
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+}
+p {
+    font-size: 1.125rem; /* 18px */
+    font-weight: 400;
+    margin: 0 0 20px 0;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li {
+    margin-bottom: 15px;
+}
+input, select, textarea, button {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    color: var(--color-text-dark);
 }
 
-/* Container for centered and padded content */
+/* * 3. Reusable Classes (Container, Button)
+ * -------------------------------------------
+ */
 .container {
-    /* Sets maximum width for large screens */
     max-width: 1280px;
-    /* Centers container horizontally */
     margin-left: auto;
     margin-right: auto;
-    /* Adds horizontal padding */
     padding-left: 30px;
     padding-right: 30px;
 }
-
-/* Header styling with sticky positioning */
-header {
-    /* Sets semi-transparent background with glassmorphism */
-    background-color: rgba(255, 255, 255, 0.9);
-    /* Adds blur effect for glassmorphism */
-    backdrop-filter: blur(10px);
-    /* Adds subtle shadow */
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    /* Makes header sticky at top */
-    position: sticky;
-    top: 0px;
-    /* Ensures header stays above content */
-    z-index: 1000;
-}
-
-/* Navigation bar styling */
-.navbar {
-    /* Uses flexbox for horizontal layout */
-    display: flex;
-    /* Spaces items between logo and links */
-    justify-content: space-between;
-    /* Centers items vertically */
-    align-items: center;
-    /* Adds padding for spacing */
-    padding-top: 25px;
-    padding-right: 30px;
-    padding-bottom: 25px;
-    padding-left: 30px;
-}
-.navbar .logo {
-    /* Sets font size for logo */
-    font-size: 28px;
-    /* Makes logo bold */
-    font-weight: 800;
-    /* Adds letter spacing for style */
-    letter-spacing: 1px;
-}
-.navbar .logo a {
-    /* Sets logo color */
-    color: #01579b;
-    /* Removes underline */
-    text-decoration-line: none;
-    /* Adds hover transition */
-    transition-property: color, transform;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
-}
-.navbar .logo a:hover {
-    /* Changes logo color on hover */
-    color: #0288d1;
-    /* Slightly scales logo on hover */
-    transform: scale(1.05);
-}
-.navbar ul {
-    /* Removes default list styling */
-    list-style-type: none;
-    /* Uses flexbox for navigation links */
-    display: flex;
-    /* Removes margins */
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    /* Removes padding */
-    padding-top: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-}
-.navbar ul li {
-    /* Adds spacing between navigation items */
-    margin-left: 30px;
-}
-.navbar ul li a {
-    /* Sets link color */
-    color: #1a3c34;
-    /* Sets font weight */
-    font-weight: 600;
-    /* Sets font size */
-    font-size: 17px;
-    /* Adds padding for larger click area */
-    padding-top: 10px;
-    padding-right: 15px;
-    padding-bottom: 10px;
-    padding-left: 15px;
-    /* Adds transition for hover effects */
-    transition-property: color, background-color, transform;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
-}
-.navbar ul li a:hover {
-    /* Changes color on hover */
-    color: #ffffff;
-    /* Adds background on hover */
-    background-color: #0288d1;
-    /* Rounds corners on hover */
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    /* Slightly lifts link on hover */
-    transform: translateY(-2px);
-}
-
-/* Hero section with parallax background */
-.hero, .about-hero, .activities-hero, .booking-hero, .contact-hero, .success {
-    /* Sets background image with fallback */
-    background-image: url("../Multimedia/hero-bg.jpg");
-    /* Sets gradient overlay for readability */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../Multimedia/hero-bg.jpg");
-    /* Ensures background covers section */
-    background-size: cover;
-    /* Centers background image */
-    background-position: center;
-    /* Fixes background for parallax effect */
-    background-attachment: fixed;
-    /* Sets text color */
-    color: #ffffff;
-    /* Adds padding for content spacing */
-    padding-top: 100px;
-    padding-bottom: 100px;
-    /* Centers text */
-    text-align: center;
-    /* Adds subtle clip-path for modern shape */
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-}
-.hero h1, .about-hero h1, .activities-hero h1, .booking-hero h1, .contact-hero h1, .success h1 {
-    /* Sets large font size */
-    font-size: 60px;
-    /* Makes heading bold */
-    font-weight: 900;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
-    margin-bottom: 25px;
-    /* Adds text shadow for readability */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    /* Adds animation for entrance */
-    animation-name: slideIn;
-    animation-duration: 1s;
-    animation-timing-function: ease-in-out;
-}
-@keyframes slideIn {
-    /* Animation for heading entrance */
-    0% {
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0px);
-        opacity: 1;
-    }
-}
-.hero p, .about-hero p, .activities-hero p, .booking-hero p, .contact-hero p, .success p {
-    /* Sets font size */
-    font-size: 24px;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
-    margin-bottom: 40px;
-    /* Adds text shadow */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-/* Button styling with micro-interactions */
 .btn {
-    /* Displays button inline */
     display: inline-block;
-    /* Sets background color */
-    background-color: #ffca28;
-    /* Sets text color */
-    color: #1a3c34;
-    /* Adds padding for size */
-    padding-top: 15px;
-    padding-right: 30px;
-    padding-bottom: 15px;
-    padding-left: 30px;
-    /* Rounds corners */
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    /* Makes text bold */
+    background-color: var(--color-secondary);
+    color: var(--color-text-dark);
+    padding: 15px 30px;
+    border-radius: 8px;
     font-weight: 700;
-    /* Sets font size */
     font-size: 18px;
-    /* Removes underline */
-    text-decoration-line: none;
-    /* Adds shadow */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    /* Adds transition for multiple properties */
-    transition-property: background-color, transform, box-shadow;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
+    text-decoration: none;
+    box-shadow: var(--shadow-light);
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 .btn:hover {
-    /* Changes background on hover */
-    background-color: #ffb300;
-    /* Lifts button on hover */
+    background-color: var(--color-secondary-dark);
     transform: translateY(-5px);
-    /* Enhances shadow on hover */
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-dark);
+    color: var(--color-text-dark); /* Ensure text color remains */
 }
 .btn:active {
-    /* Depresses button on click */
     transform: translateY(0px);
-    /* Reduces shadow on click */
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Overview section with tropical styling */
-.overview {
-    /* Adds padding for spacing */
+/* * 4. Header & Navigation
+ * -------------------------------------------
+ */
+header {
+    background-color: var(--color-bg-glass);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+}
+.navbar .logo {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+.navbar .logo a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.navbar .logo a:hover {
+    color: var(--color-primary-light);
+    transform: scale(1.05);
+}
+.navbar ul {
+    display: flex;
+}
+.navbar ul li {
+    margin-left: 30px;
+    margin-bottom: 0; /* Override base li */
+}
+.navbar ul li a {
+    color: var(--color-text-dark);
+    font-weight: 600;
+    font-size: 17px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.navbar ul li a:hover {
+    color: var(--color-text-light);
+    background-color: var(--color-primary-light);
+    transform: translateY(-2px);
+}
+/* NEW: Mobile Navigation Toggle Button (Hamburger) */
+.nav-toggle {
+    display: none; /* Hidden on desktop */
+    font-size: 24px;
+    color: var(--color-primary);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1002;
+    padding: 10px;
+}
+
+/* * 5. Hero Sections
+ * -------------------------------------------
+ */
+.hero, .about-hero, .activities-hero, .booking-hero, .contact-hero, .success {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../Multimedia/hero-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--color-text-light);
+    padding: 100px 0;
+    text-align: center;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+.hero h1, .about-hero h1, .activities-hero h1, .booking-hero h1, .contact-hero h1, .success h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* Animation is now handled by JS */
+}
+.hero p, .about-hero p, .activities-hero p, .booking-hero p, .contact-hero p, .success p {
+    font-size: 1.5rem; /* 24px */
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* * 6. Page-Specific Sections
+ * -------------------------------------------
+ */
+/* All sections shared padding */
+.overview, .activities, .activities-list, .testimonials, .cta, 
+.history, .mission, .team, .faq, .gallery, 
+.booking, .contact, .contact-info, .expenses {
     padding-top: 80px;
     padding-bottom: 80px;
-    /* Sets light background */
-    background-color: #ffffff;
-    /* Adds subtle border */
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
-    border-bottom-color: #e0f7fa;
 }
-.overview h2 {
-    /* Sets font size */
-    font-size: 42px;
-    /* Centers text */
-    text-align: center;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
-    margin-bottom: 40px;
-    /* Adds tropical color */
-    color: #01579b;
+
+/* Overview Section */
+.overview {
+    background-color: var(--color-bg-light);
+    border-bottom: 2px solid var(--color-primary-lightest);
 }
 .overview-img {
-    /* Sets full width */
     width: 100%;
-    /* Limits height */
     max-height: 700px;
-    /* Ensures image covers area */
     object-fit: cover;
-    /* Rounds corners */
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    /* Adds shadow */
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    /* Adds bottom margin */
+    border-radius: 15px;
+    box-shadow: var(--shadow-medium);
     margin-bottom: 30px;
 }
 #overview-text {
-    /* Sets semi-transparent background */
-    background-color: rgba(224, 247, 250, 0.9);
-    /* Adds padding */
-    padding-top: 30px;
-    padding-right: 30px;
-    padding-bottom: 30px;
-    padding-left: 30px;
-    /* Rounds corners */
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    /* Adds blur effect */
+    background-color: var(--color-bg-glass-light);
+    padding: 30px;
+    border-radius: 15px;
     backdrop-filter: blur(5px);
 }
-#overview-text p {
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
-    margin-bottom: 20px;
-    /* Sets font size */
-    font-size: 18px;
-}
 #overview-text p::first-letter {
-    /* Enlarges first letter for decorative effect */
     font-size: 1.5em;
-    /* Makes bold */
     font-weight: 700;
-    /* Sets color */
-    color: #0288d1;
+    color: var(--color-primary-light);
 }
 
-/* Activities section with card layout */
-.activities, .activities-list {
-    /* Adds padding */
-    padding-top: 80px;
-    padding-bottom: 80px;
-    /* Sets tropical background */
-    background-image: linear-gradient(to bottom, #b2ebf2, #ffffff);
-}
-.activities h2, .activities-list h2 {
-    /* Sets font size */
-    font-size: 42px;
-    /* Centers text */
-    text-align: center;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
-    margin-bottom: 50px;
-    /* Sets color */
-    color: #01579b;
+/* Activities Section */
+.activities, .activities-list, .gallery, .expenses {
+    background-image: linear-gradient(to bottom, var(--color-primary-lighter), var(--color-bg-light));
 }
 .activity-grid {
-    /* Uses CSS grid for layout */
     display: grid;
-    /* Responsive columns */
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    /* Adds spacing */
     gap: 30px;
 }
 .activity-card {
-    /* Sets background with glassmorphism */
     background-color: rgba(255, 255, 255, 0.95);
-    /* Adds blur effect */
     backdrop-filter: blur(8px);
-    /* Adds padding */
-    padding-top: 25px;
-    padding-right: 25px;
-    padding-bottom: 25px;
-    padding-left: 25px;
-    /* Rounds corners */
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    /* Adds shadow */
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
-    /* Centers text */
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-medium);
     text-align: center;
-    /* Adds transition for hover */
-    transition-property: transform, box-shadow;
-    transition-duration: 0.4s;
-    transition-timing-function: ease-in-out;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
 }
 .activity-card:hover {
-    /* Lifts card on hover */
     transform: translateY(-10px);
-    /* Enhances shadow on hover */
-    box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-dark);
 }
 .activity-card img {
-    /* Sets image width */
     width: 100%;
-    /* Sets fixed height */
     height: 220px;
-    /* Ensures image covers area */
     object-fit: cover;
-    /* Rounds top corners */
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    /* Adds bottom margin */
+    border-radius: 15px 15px 0 0; /* Only top corners if image is at top */
     margin-bottom: 20px;
 }
 .activity-card i {
-    /* Sets icon size */
     font-size: 50px;
-    /* Sets icon color */
-    color: #0288d1;
-    /* Adds bottom margin */
-    margin-bottom: 20px;
-}
-.activity-card h3 {
-    /* Sets font size */
-    font-size: 26px;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
-    margin-bottom: 15px;
-    /* Sets color */
-    color: #01579b;
-}
-.activity-card p {
-    /* Sets font size */
-    font-size: 17px;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
+    color: var(--color-primary-light);
     margin-bottom: 20px;
 }
 
-/* Testimonials section with modern styling */
+/* Testimonials Section */
 .testimonials {
-    /* Adds padding */
-    padding-top: 80px;
-    padding-bottom: 80px;
-    /* Sets background */
-    background-color: #ffffff;
-}
-.testimonials h2 {
-    /* Sets font size */
-    font-size: 42px;
-    /* Centers text */
-    text-align: center;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
-    margin-bottom: 50px;
-    /* Sets color */
-    color: #01579b;
+    background-color: var(--color-bg-light);
 }
 .testimonial-grid {
-    /* Uses grid layout */
     display: grid;
-    /* Responsive columns */
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    /* Adds spacing */
     gap: 30px;
 }
 .testimonial-card {
-    /* Sets semi-transparent background */
-    background-color: rgba(224, 247, 250, 0.9);
-    /* Adds blur effect */
+    background-color: var(--color-bg-glass-light);
     backdrop-filter: blur(5px);
-    /* Adds padding */
-    padding-top: 25px;
-    padding-right: 25px;
-    padding-bottom: 25px;
-    padding-left: 25px;
-    /* Rounds corners */
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    /* Adds border */
-    border-width: 2px;
-    border-style: solid;
-    border-color: #b2ebf2;
-    /* Adds shadow */
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    border-radius: 15px;
+    border: 2px solid var(--color-primary-lighter);
+    box-shadow: var(--shadow-light);
 }
 .testimonial-card p {
-    /* Sets italic style for quotes */
     font-style: italic;
-    /* Sets font size */
     font-size: 18px;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
-    margin-bottom: 20px;
+    position: relative;
 }
 .testimonial-card p::before {
-    /* Adds quote mark before */
     content: '"';
-    /* Sets font size */
     font-size: 30px;
-    /* Sets color */
-    color: #0288d1;
-    /* Adds margin */
+    color: var(--color-primary-light);
     margin-right: 5px;
-}
-.testimonial-card p::after {
-    /* Adds quote mark after */
-    content: '"';
-    /* Sets font size */
-    font-size: 30px;
-    /* Sets color */
-    color: #0288d1;
+    position: absolute;
+    left: -15px;
+    top: -10px;
 }
 .testimonial-card h4 {
-    /* Sets font size */
-    font-size: 20px;
-    /* Aligns text to right */
     text-align: right;
-    /* Sets color */
-    color: #01579b;
+    color: var(--color-primary);
 }
 
-/* Call-to-action section */
+/* Call-to-Action (CTA) Section */
 .cta {
-    /* Adds padding */
-    padding-top: 80px;
-    padding-bottom: 80px;
-    /* Centers text */
     text-align: center;
-    /* Sets background with gradient */
-    background-image: linear-gradient(to right, #0288d1, #4fc3f7);
-    /* Sets text color */
-    color: #ffffff;
-    /* Adds clip-path for shape */
+    background-image: linear-gradient(to right, var(--color-primary-light), #4fc3f7);
+    color: var(--color-text-light);
     clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
 }
-.cta h2 {
-    /* Sets font size */
-    font-size: 42px;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
-    margin-bottom: 25px;
+.cta h2, .cta p {
+    color: var(--color-text-light);
 }
-.cta p {
-    /* Sets font size */
-    font-size: 22px;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
-    margin-bottom: 40px;
+.cta .btn {
+    background-color: var(--color-secondary);
+    color: var(--color-text-dark);
+}
+.cta .btn:hover {
+    background-color: var(--color-secondary-dark);
 }
 
-/* About page sections */
-.about-hero, .activities-hero, .booking-hero, .contact-hero {
-    /* Adds padding */
-    padding-top: 80px;
-    padding-bottom: 80px;
-}
+/* About Page (History, Mission, Team) */
 .history, .mission, .team, .faq {
-    /* Adds padding */
-    padding-top: 80px;
-    padding-bottom: 80px;
-    /* Sets background */
-    background-color: #ffffff;
-}
-.history h2, .mission h2, .team h2, .faq h2 {
-    /* Sets font size */
-    font-size: 42px;
-    /* Centers text */
-    text-align: center;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
-    margin-bottom: 40px;
-    /* Sets color */
-    color: #01579b;
+    background-color: var(--color-bg-light);
 }
 .section-img {
-    /* Sets full width */
     width: 100%;
-    /* Limits height */
     max-height: 500px;
-    /* Ensures image covers area */
     object-fit: cover;
-    /* Rounds corners */
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    /* Adds shadow */
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    /* Adds bottom margin */
+    border-radius: 15px;
+    box-shadow: var(--shadow-medium);
     margin-bottom: 30px;
 }
-.history p, .mission p, .faq p {
-    /* Sets font size */
-    font-size: 18px;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
-    margin-bottom: 20px;
-}
 .team-grid {
-    /* Uses grid layout */
     display: grid;
-    /* Responsive columns */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    /* Adds spacing */
     gap: 30px;
 }
 .team-member {
-    /* Centers text */
     text-align: center;
-    /* Sets background */
-    background-color: #ffffff;
-    /* Adds padding */
-    padding-top: 20px;
-    padding-bottom: 20px;
-    /* Rounds corners */
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    /* Adds shadow */
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    background-color: var(--color-bg-light);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.team-member:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
 }
 .team-member img {
-    /* Sets image width */
     width: 100%;
-    /* Sets fixed height */
     height: 280px;
-    /* Ensures image covers area */
     object-fit: cover;
-    /* Rounds corners */
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    /* Adds bottom margin */
+    border-radius: 15px;
     margin-bottom: 15px;
-}
-.team-member h3 {
-    /* Sets font size */
-    font-size: 22px;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
-    margin-bottom: 10px;
-    /* Sets color */
-    color: #01579b;
-}
-.team-member p {
-    /* Sets font size */
-    font-size: 17px;
-    /* Removes margins */
-    margin-top: 0px;
-    margin-bottom: 0px;
 }
 .faq-item {
-    /* Adds padding */
-    padding-top: 25px;
-    padding-bottom: 25px;
-    /* Adds border */
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
-    border-bottom-color: #e0f7fa;
-}
-.faq-item h3 {
-    /* Sets font size */
-    font-size: 22px;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
-    margin-bottom: 15px;
-    /* Sets color */
-    color: #01579b;
+    padding: 25px 0;
+    border-bottom: 2px solid var(--color-primary-lightest);
 }
 
-/* Gallery section with hover effects */
-.gallery {
-    /* Adds padding */
-    padding-top: 80px;
-    padding-bottom: 80px;
-    /* Sets background */
-    background-image: linear-gradient(to bottom, #b2ebf2, #ffffff);
-}
-.gallery h2 {
-    /* Sets font size */
-    font-size: 42px;
-    /* Centers text */
-    text-align: center;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
-    margin-bottom: 50px;
-    /* Sets color */
-    color: #01579b;
-}
+/* Activities Page (Gallery) */
 .gallery-grid {
-    /* Uses grid layout */
     display: grid;
-    /* Responsive columns */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    /* Adds spacing */
     gap: 25px;
 }
 .gallery-grid img {
-    /* Sets image width */
     width: 100%;
-    /* Sets fixed height */
     height: 240px;
-    /* Ensures image covers area */
     object-fit: cover;
-    /* Rounds corners */
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    /* Adds shadow */
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    /* Adds transition for hover */
-    transition-property: transform, filter;
-    transition-duration: 0.4s;
-    transition-timing-function: ease-in-out;
+    border-radius: 15px;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.4s ease-in-out, filter 0.4s ease-in-out, box-shadow 0.4s;
 }
 .gallery-grid img:hover {
-    /* Scales and brightens image on hover */
     transform: scale(1.08);
     filter: brightness(1.1);
+    box-shadow: var(--shadow-dark);
 }
 
-/* Booking form with modern styling */
-.booking {
-    /* Adds padding */
-    padding-top: 80px;
-    padding-bottom: 80px;
-    /* Sets background */
-    background-color: #ffffff;
-}
-.booking h2 {
-    /* Sets font size */
-    font-size: 42px;
-    /* Centers text */
-    text-align: center;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
-    margin-bottom: 40px;
-    /* Sets color */
-    color: #01579b;
-}
-.booking-form {
-    /* Uses grid layout */
+/* * 7. Forms & Tables
+ * -------------------------------------------
+ */
+.booking-form, .contact-form {
     display: grid;
-    /* Adds spacing */
     gap: 25px;
-    /* Limits form width */
     max-width: 700px;
-    /* Centers form */
     margin-left: auto;
     margin-right: auto;
-    /* Sets background with glassmorphism */
     background-color: rgba(255, 255, 255, 0.95);
-    /* Adds blur effect */
     backdrop-filter: blur(8px);
-    /* Adds padding */
-    padding-top: 30px;
-    padding-right: 30px;
-    padding-bottom: 30px;
-    padding-left: 30px;
-    /* Rounds corners */
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    /* Adds shadow */
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-medium);
 }
 .booking-form fieldset {
-    /* Sets border */
-    border-width: 2px;
-    border-style: solid;
-    border-color: #b2ebf2;
-    /* Adds padding */
-    padding-top: 25px;
-    padding-right: 25px;
-    padding-bottom: 25px;
-    padding-left: 25px;
-    /* Rounds corners */
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border: 2px solid var(--color-primary-lighter);
+    padding: 25px;
+    border-radius: 10px;
 }
 .booking-form legend {
-    /* Sets font size */
     font-size: 20px;
-    /* Makes bold */
     font-weight: 700;
-    /* Sets color */
-    color: #01579b;
+    color: var(--color-primary);
+    padding: 0 10px; /* Add padding */
 }
-.booking-form label {
-    /* Displays label as block */
+.booking-form label, .contact-form label {
     display: block;
-    /* Adds bottom margin */
     margin-bottom: 10px;
-    /* Sets font size */
     font-size: 17px;
-    /* Sets font weight */
     font-weight: 600;
 }
-.booking-form input, .booking-form select, .booking-form textarea {
-    /* Sets full width */
+.booking-form input, .booking-form select, .booking-form textarea,
+.contact-form input, .contact-form textarea {
     width: 100%;
-    /* Adds padding */
-    padding-top: 12px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-left: 12px;
-    /* Sets border */
-    border-width: 2px;
-    border-style: solid;
-    border-color: #b2ebf2;
-    /* Rounds corners */
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    /* Sets background */
-    background-color: #ffffff;
-    /* Sets font size */
+    padding: 12px;
+    border: 2px solid var(--color-primary-lighter);
+    border-radius: 8px;
+    background-color: var(--color-bg-light);
     font-size: 16px;
-    /* Adds transition for focus */
-    transition-property: border-color, box-shadow;
-    transition-duration: 0.3s;
-    transition-timing-function: ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
-.booking-form input:focus, .booking-form select:focus, .booking-form textarea:focus {
-    /* Removes default outline */
-    outline-width: 0px;
-    /* Changes border color on focus */
-    border-color: #0288d1;
-    /* Adds shadow on focus */
-    box-shadow: 0px 0px 8px rgba(2, 136, 209, 0.3);
+.booking-form input:focus, .booking-form select:focus, .booking-form textarea:focus,
+.contact-form input:focus, .contact-form textarea:focus {
+    outline: 0;
+    border-color: var(--color-primary-light);
+    box-shadow: 0 0 8px rgba(2, 136, 209, 0.3);
 }
 .booking-form input:invalid, .booking-form select:invalid {
-    /* Highlights invalid fields */
     border-color: #d32f2f;
-    /* Sets background for invalid fields */
     background-color: #ffebee;
 }
-.booking-form textarea {
-    /* Sets textarea height */
+.booking-form textarea, .contact-form textarea {
     height: 120px;
-    /* Allows vertical resizing */
     resize: vertical;
-}
-.booking-form select[multiple] {
-    /* Sets height for multiple select */
-    height: 120px;
-}
-
-/* Contact form styling */
-.contact-form {
-    /* Uses grid layout */
-    display: grid;
-    /* Adds spacing */
-    gap: 25px;
-    /* Limits form width */
-    max-width: 700px;
-    /* Centers form */
-    margin-left: auto;
-    margin-right: auto;
-    /* Sets background with glassmorphism */
-    background-color: rgba(255, 255, 255, 0.95);
-    /* Adds blur effect */
-    backdrop-filter: blur(8px);
-    /* Adds padding */
-    padding-top: 30px;
-    padding-right: 30px;
-    padding-bottom: 30px;
-    padding-left: 30px;
-    /* Rounds corners */
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    /* Adds shadow */
-    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
-}
-.contact-form label {
-    /* Displays label as block */
-    display: block;
-    /* Adds bottom margin */
-    margin-bottom: 10px;
-    /* Sets font size */
-    font-size: 17px;
-    /* Sets font weight */
-    font-weight: 600;
-}
-.contact-form input, .contact-form textarea {
-    /* Sets full width */
-    width: 100%;
-    /* Adds padding */
-    padding-top: 12px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-left: 12px;
-    /* Sets border */
-    border-width: 2px;
-    border-style: solid;
-    border-color: #b2ebf2;
-    /* Rounds corners */
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    /* Sets background */
-    background-color: #ffffff;
-    /* Sets font size */
-    font-size: 16px;
-    /* Adds transition */
-    transition-property: border-color, box-shadow;
-    transition-duration: 0.3s;
-    transition-timing-function: ease;
-}
-.contact-form input:focus, .contact-form textarea:focus {
-    /* Removes outline */
-    outline-width: 0px;
-    /* Changes border color */
-    border-color: #0288d1;
-    /* Adds shadow */
-    box-shadow: 0px 0px 8px rgba(2, 136, 209, 0.3);
 }
 .contact-form textarea {
-    /* Sets textarea height */
     height: 180px;
-    /* Allows vertical resizing */
-    resize: vertical;
+}
+.booking-form select[multiple] {
+    height: 120px;
+}
+.booking-form button[type="reset"] {
+    background-color: #9e9e9e; /* Grey color for reset */
+    color: var(--color-text-light);
+}
+.booking-form button[type="reset"]:hover {
+    background-color: #757575;
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-dark);
 }
 
-/* Contact info section */
-.contact-info {
-    /* Adds padding */
-    padding-top: 80px;
-    padding-bottom: 80px;
-    /* Sets background */
-    background-color: #ffffff;
-}
-.contact-info h2 {
-    /* Sets font size */
-    font-size: 42px;
-    /* Centers text */
-    text-align: center;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
-    margin-bottom: 40px;
-    /* Sets color */
-    color: #01579b;
-}
+/* Contact Info Section */
 .contact-info p {
-    /* Sets font size */
     font-size: 20px;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
-    margin-bottom: 20px;
 }
 .contact-info p i {
-    /* Sets icon color */
-    color: #0288d1;
-    /* Adds margin */
+    color: var(--color-primary-light);
     margin-right: 15px;
+    width: 20px; /* Align icons */
 }
 .map-placeholder img {
-    /* Sets full width */
     width: 100%;
-    /* Sets fixed height */
     height: 350px;
-    /* Ensures image covers area */
     object-fit: cover;
-    /* Rounds corners */
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    /* Adds shadow */
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: var(--shadow-medium);
 }
 
-/* Expenses table styling */
-.expenses {
-    /* Adds padding */
-    padding-top: 80px;
-    padding-bottom: 80px;
-    /* Sets background */
-    background-image: linear-gradient(to bottom, #b2ebf2, #ffffff);
-}
-.expenses h2 {
-    /* Sets font size */
-    font-size: 42px;
-    /* Centers text */
-    text-align: center;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
-    margin-bottom: 40px;
-    /* Sets color */
-    color: #01579b;
-}
+/* Expenses Table */
 .expense-table {
-    /* Sets full width */
     width: 100%;
-    /* Collapses borders */
     border-collapse: collapse;
-    /* Sets background */
-    background-color: #ffffff;
-    /* Rounds corners */
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    /* Adds shadow */
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    background-color: var(--color-bg-light);
+    border-radius: 15px;
+    box-shadow: var(--shadow-medium);
+    overflow: hidden; /* Ensures border-radius applies to table */
 }
 .expense-table caption {
-    /* Sets font size */
     font-size: 20px;
-    /* Makes bold */
     font-weight: 700;
-    /* Adds padding */
-    padding-top: 15px;
-    padding-bottom: 15px;
-    /* Sets color */
-    color: #01579b;
+    padding: 15px;
+    color: var(--color-primary);
 }
 .expense-table th, .expense-table td {
-    /* Sets border */
-    border-width: 2px;
-    border-style: solid;
-    border-color: #e0f7fa;
-    /* Adds padding */
-    padding-top: 15px;
-    padding-right: 20px;
-    padding-bottom: 15px;
-    padding-left: 20px;
-    /* Aligns text */
+    border: 2px solid var(--color-primary-lightest);
+    padding: 15px 20px;
     text-align: left;
 }
 .expense-table th {
-    /* Sets background */
-    background-color: #0288d1;
-    /* Sets text color */
-    color: #ffffff;
-    /* Makes bold */
+    background-color: var(--color-primary-light);
+    color: var(--color-text-light);
     font-weight: 700;
 }
 .expense-table tr:nth-child(even) {
-    /* Sets alternating row color */
-    background-color: #e0f7fa;
+    background-color: var(--color-primary-lightest);
 }
 
-/* Footer with tropical styling */
+/* * 8. Footer
+ * -------------------------------------------
+ */
 footer {
-    /* Sets background gradient */
-    background-image: linear-gradient(to top, #01579b, #0288d1);
-    /* Sets text color */
-    color: #ffffff;
-    /* Adds padding */
-    padding-top: 60px;
-    padding-bottom: 60px;
-    /* Adds clip-path for shape */
+    background-image: linear-gradient(to top, var(--color-primary), var(--color-primary-light));
+    color: var(--color-text-light);
+    padding: 80px 0 60px 0; /* Increased top padding for clip-path */
     clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
 }
 .footer-container {
-    /* Uses grid layout */
     display: grid;
-    /* Responsive columns */
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    /* Adds spacing */
     gap: 30px;
-    /* Limits width */
     max-width: 1280px;
-    /* Centers container */
     margin-left: auto;
     margin-right: auto;
-    /* Adds padding */
     padding-left: 30px;
     padding-right: 30px;
 }
 .footer-section h4 {
-    /* Sets font size */
     font-size: 20px;
-    /* Removes top margin */
-    margin-top: 0px;
-    /* Adds bottom margin */
     margin-bottom: 20px;
-    /* Sets color */
-    color: #ffca28;
-}
-.footer-section ul {
-    /* Removes default list styling */
-    list-style-type: none;
-    /* Removes margins */
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-}
-.footer-section ul li {
-    /* Adds bottom margin */
-    margin-bottom: 15px;
+    color: var(--color-secondary);
 }
 .footer-section ul li a {
-    /* Sets link color */
-    color: #ffffff;
-    /* Sets font size */
+    color: var(--color-text-light);
     font-size: 16px;
-    /* Adds transition */
-    transition-property: color, transform;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 .footer-section ul li a:hover {
-    /* Changes color on hover */
-    color: #ffca28;
-    /* Slightly shifts link on hover */
+    color: var(--color-secondary);
     transform: translateX(5px);
 }
 .footer-section ul li a i {
-    /* Adds margin to icons */
     margin-right: 12px;
+    width: 20px; /* Align icons */
 }
 .footer-bottom {
-    /* Centers text */
     text-align: center;
-    /* Adds top padding */
-    padding-top: 30px;
-    /* Sets font size */
+    padding-top: 40px; /* Increased padding */
+    margin-top: 30px; /* Added margin */
     font-size: 16px;
-    /* Adds border */
-    border-top-width: 1px;
-    border-top-style: solid;
-    border-top-color: rgba(255, 255, 255, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Decorative animated ball with tropical colors */
+/* * 9. Animations & Effects
+ * -------------------------------------------
+ */
+
+/* NEW: Helper class for scroll animations */
+/* Hides elements before they animate in */
+.animate-on-scroll {
+    opacity: 0;
+}
+/* REMOVED: The old `section { animation-name: fadeInUp; ... }` block.
+   This is now handled by JavaScript and the class above.
+*/
+
+/* Decorative Ball */
 .ball {
-    /* Sets width */
     width: 60px;
-    /* Sets height */
     height: 60px;
-    /* Makes circle */
     border-radius: 50%;
-    /* Sets animated gradient */
-    background-image: linear-gradient(45deg, #ffca28, #0288d1, #4fc3f7, #ffca28);
-    /* Animates gradient */
+    background-image: linear-gradient(45deg, var(--color-secondary), var(--color-primary-light), #4fc3f7, var(--color-secondary));
     background-size: 200%;
-    animation-name: gradientShift;
-    animation-duration: 8s;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    /* Positions element */
+    animation: gradientShift 8s ease-in-out infinite;
     position: fixed;
     top: 120px;
     left: 60px;
-    /* Adds shadow */
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-medium);
+    z-index: 999; /* Below header */
+    transition: transform 0.3s ease-in-out;
 }
 @keyframes gradientShift {
-    /* Animates background gradient */
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 .ball:hover {
-    /* Scales on hover */
     transform: scale(1.2);
-    /* Adds transition */
-    transition-property: transform;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
 }
 
-/* Success page styling */
-.success {
-    /* Adds padding */
-    padding-top: 120px;
-    padding-bottom: 120px;
-    /* Centers text */
-    text-align: center;
-    /* Sets background gradient */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../Multimedia/success-bg.jpg");
-    /* Ensures background covers */
-    background-size: cover;
-    /* Centers background */
-    background-position: center;
-    /* Fixes background */
-    background-attachment: fixed;
-}
+/* * 10. Responsive Media Queries
+ * -------------------------------------------
+ */
 
-/* Typography styles for consistency */
-h1 {
-    /* Sets font family */
-    font-family: "Montserrat", "Roboto", Arial, sans-serif;
-    /* Sets font size */
-    font-size: 60px;
-    /* Makes bold */
-    font-weight: 900;
-    /* Sets color */
-    color: #ffffff;
-    /* Removes margins */
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 25px;
-    margin-left: 0px;
-}
-h2 {
-    /* Sets font family */
-    font-family: "Montserrat", "Roboto", Arial, sans-serif;
-    /* Sets font size */
-    font-size: 42px;
-    /* Makes bold */
-    font-weight: 700;
-    /* Sets color */
-    color: #01579b;
-    /* Removes margins */
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 40px;
-    margin-left: 0px;
-}
-h3 {
-    /* Sets font family */
-    font-family: "Montserrat", "Roboto", Arial, sans-serif;
-    /* Sets font size */
-    font-size: 26px;
-    /* Sets font weight */
-    font-weight: 600;
-    /* Sets color */
-    color: #01579b;
-    /* Removes margins */
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 15px;
-    margin-left: 0px;
-}
-h4 {
-    /* Sets font family */
-    font-family: "Montserrat", "Roboto", Arial, sans-serif;
-    /* Sets font size */
-    font-size: 20px;
-    /* Sets font weight */
-    font-weight: 600;
-    /* Sets color */
-    color: #01579b;
-    /* Removes margins */
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 15px;
-    margin-left: 0px;
-}
-p {
-    /* Sets font family */
-    font-family: "Montserrat", "Roboto", Arial, sans-serif;
-    /* Sets font size */
-    font-size: 18px;
-    /* Sets font weight */
-    font-weight: 400;
-    /* Sets color */
-    color: #1a3c34;
-    /* Removes margins */
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 20px;
-    margin-left: 0px;
-}
-ul {
-    /* Removes default list styling */
-    list-style-type: none;
-    /* Removes margins */
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-}
-li {
-    /* Adds bottom margin */
-    margin-bottom: 15px;
-}
-input, select, textarea, button {
-    /* Sets font family */
-    font-family: "Montserrat", "Roboto", Arial, sans-serif;
-    /* Sets font size */
-    font-size: 16px;
-    /* Sets color */
-    color: #1a3c34;
-}
-
-/* Scroll-triggered animations for sections */
-section {
-    /* Adds animation for scroll entrance */
-    animation-name: fadeInUp;
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    animation-delay: 0.2s;
-}
-@keyframes fadeInUp {
-    /* Animation for section entrance */
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0px);
-    }
-}
-
-/* Responsive design for tablets */
+/* Tablets */
 @media screen and (max-width: 768px) {
-    /* Adjusts container padding */
     .container {
         padding-left: 20px;
         padding-right: 20px;
     }
-    /* Adjusts navbar layout */
+
+    /* NEW: Mobile Navigation Styles */
     .navbar {
-        /* Stacks items vertically */
-        flex-direction: column;
-        /* Adds padding */
-        padding-top: 20px;
-        padding-bottom: 20px;
+        flex-direction: row; /* Keep logo and toggle on one line */
+        padding: 20px;
+    }
+    .nav-toggle {
+        display: block; /* Show hamburger button */
     }
     .navbar ul {
-        /* Stacks links vertically */
+        /* Full-screen overlay menu */
+        position: fixed;
+        top: 0;
+        left: -100%; /* Start off-screen */
+        width: 100%;
+        height: 100vh;
+        background-color: var(--color-bg-light);
         flex-direction: column;
-        /* Centers links */
+        justify-content: center;
         align-items: center;
-        /* Adds top margin */
-        margin-top: 20px;
+        margin-top: 0;
+        padding: 0;
+        transition: left 0.3s ease-in-out;
+        z-index: 1001; /* Below toggle, above content */
+    }
+    .navbar ul.active {
+        left: 0; /* Slide in */
     }
     .navbar ul li {
-        /* Removes left margin */
-        margin-left: 0px;
-        /* Adds bottom margin */
-        margin-bottom: 15px;
+        margin-left: 0;
+        margin-bottom: 30px;
     }
     .navbar ul li a {
-        /* Increases font size */
-        font-size: 18px;
+        font-size: 24px; /* Bigger text for mobile menu */
+        padding: 15px 25px;
     }
-    /* Adjusts hero section */
-    .hero h1, .about-hero h1, .activities-hero h1, .booking-hero h1, .contact-hero h1, .success h1 {
-        /* Reduces font size */
-        font-size: 48px;
+    .navbar ul li a:hover {
+        color: var(--color-text-light);
+        background-color: var(--color-primary-light);
+        transform: none; /* Disable hover lift on mobile menu */
     }
-    .hero p, .about-hero p, .activities-hero p, .booking-hero p, .contact-hero p, .success p {
-        /* Reduces font size */
-        font-size: 20px;
+    /* END: Mobile Navigation Styles */
+    
+    .hero, .about-hero, .activities-hero, .booking-hero, .contact-hero, .success {
+        clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); /* Adjust clip-path */
     }
-    /* Adjusts section headings */
-    h2 {
-        /* Reduces font size */
-        font-size: 36px;
+    
+    /* Make table scrollable on small screens */
+    .expenses {
+        overflow-x: auto;
     }
-    /* Adjusts activity cards */
-    .activity-card {
-        /* Reduces width */
-        width: 100%;
-    }
-    .activity-card img {
-        /* Adjusts image height */
-        height: 200px;
-    }
-    /* Adjusts gallery images */
-    .gallery-grid img {
-        /* Adjusts image height */
-        height: 200px;
-    }
-    /* Adjusts form width */
-    .booking-form, .contact-form {
-        /* Sets full width */
-        width: 100%;
+    .expense-table {
+        min-width: 600px; /* Force scrolling if needed */
     }
 }
 
-/* Responsive design for mobile devices */
+/* Mobile Devices */
 @media screen and (max-width: 480px) {
-    /* Adjusts container padding */
     .container {
         padding-left: 15px;
         padding-right: 15px;
     }
-    /* Adjusts logo font size */
     .navbar .logo {
         font-size: 24px;
     }
-    /* Adjusts hero section */
     .hero, .about-hero, .activities-hero, .booking-hero, .contact-hero, .success {
-        /* Reduces padding */
         padding-top: 60px;
         padding-bottom: 60px;
     }
-    .hero h1, .about-hero h1, .activities-hero h1, .booking-hero h1, .contact-hero h1, .success h1 {
-        /* Reduces font size */
-        font-size: 36px;
-    }
-    .hero p, .about-hero p, .activities-hero p, .booking-hero p, .contact-hero p, .success p {
-        /* Reduces font size */
-        font-size: 18px;
-    }
-    /* Adjusts section padding */
     .overview, .activities, .activities-list, .testimonials, .cta, .history, .mission, .team, .faq, .booking, .contact-info, .expenses {
-        /* Reduces padding */
         padding-top: 50px;
         padding-bottom: 50px;
     }
-    /* Adjusts section headings */
-    h2 {
-        /* Reduces font size */
-        font-size: 32px;
-    }
-    /* Adjusts activity card images */
     .activity-card img {
-        /* Reduces height */
         height: 180px;
     }
-    /* Adjusts gallery images */
     .gallery-grid img {
-        /* Reduces height */
         height: 180px;
     }
-    /* Adjusts team member images */
     .team-member img {
-        /* Reduces height */
         height: 240px;
     }
-    /* Adjusts map placeholder */
     .map-placeholder img {
-        /* Reduces height */
         height: 250px;
     }
-    /* Adjusts decorative ball */
     .ball {
-        /* Reduces size */
         width: 40px;
         height: 40px;
-        /* Repositions */
-        top: 80px;
+        top: 90px; /* Adjust position for smaller header */
         left: 20px;
+        display: none; /* Optionally hide on small mobile */
     }
 }
