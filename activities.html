@@ -1,32 +1,20 @@
 <!DOCTYPE html>
-<!-- HTML5 document declaration -->
 <html lang="en">
 <head>
-    <!-- Character encoding -->
     <meta charset="UTF-8">
-    <!-- Responsive viewport -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO description -->
     <meta name="description" content="Explore thrilling activities on Paradise Island, including snorkeling, hiking, and more.">
-    <!-- SEO keywords -->
     <meta name="keywords" content="Paradise Island, activities, snorkeling, hiking, kayaking, relaxation">
-    <!-- Author -->
     <meta name="author" content="Vividhan">
-    <!-- Page title -->
     <title>Activities - Paradise Island</title>
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="../Multimedia/paradise-icon.png">
-    <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="animate__animated animate__fadeInDown">
-        <!-- Navigation -->
+    
+    <header class="animate-on-scroll" data-animation="animate__fadeInDown">
         <nav class="navbar">
             <div class="logo"><a href="index.html">Paradise Island</a></div>
             <ul>
@@ -36,41 +24,41 @@
                 <li><a href="booking.html">Book Now</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </header>
 
-    <!-- Main content -->
     <main>
-        <!-- Activities hero -->
         <section class="activities-hero container">
-            <h1>Adventure Awaits</h1>
-            <p>Discover a range of exciting activities tailored to every traveler.</p>
+            <h1 class="animate-on-scroll" data-animation="animate__fadeInDown">Adventure Awaits</h1>
+            <p class="animate-on-scroll" data-animation="animate__fadeInUp">Discover a range of exciting activities tailored to every traveler.</p>
         </section>
 
-        <!-- Activities list -->
         <section class="activities-list container">
             <h2>Our Activities</h2>
             <div class="activity-grid">
-                <div class="activity-card">
-                    <img src="../Multimedia/snorkeling.jpg" alt="Snorkeling">
+                <div class="activity-card animate-on-scroll" data-animation="animate__fadeInUp">
+                    <img src="../Multimedia/snorkeling.jpg" alt="Snorkeling" loading="lazy">
                     <h3>Snorkeling</h3>
                     <p>Explore vibrant coral reefs and swim with tropical fish.</p>
                     <a href="booking.html" class="btn">Book Now</a>
                 </div>
-                <div class="activity-card">
-                    <img src="../Multimedia/hiking.jpg" alt="Hiking">
+                <div class="activity-card animate-on-scroll" data-animation="animate__fadeInUp">
+                    <img src="../Multimedia/hiking.jpg" alt="Hiking" loading="lazy">
                     <h3>Hiking</h3>
                     <p>Trek through rainforests with breathtaking views.</p>
                     <a href="booking.html" class="btn">Book Now</a>
                 </div>
-                <div class="activity-card">
-                    <img src="../Multimedia/beach.jpg" alt="Beach Relaxation">
+                <div class="activity-card animate-on-scroll" data-animation="animate__fadeInUp">
+                    <img src="../Multimedia/beach.jpg" alt="Beach Relaxation" loading="lazy">
                     <h3>Beach Relaxation</h3>
                     <p>Relax on pristine beaches with tropical cocktails.</p>
                     <a href="booking.html" class="btn">Book Now</a>
                 </div>
-                <div class="activity-card">
-                    <img src="../Multimedia/kayaking.jpg" alt="Kayaking">
+                <div class="activity-card animate-on-scroll" data-animation="animate__fadeInUp">
+                    <img src="../Multimedia/kayaking.jpg" alt="Kayaking" loading="lazy">
                     <h3>Kayaking</h3>
                     <p>Paddle through serene lagoons and hidden coves.</p>
                     <a href="booking.html" class="btn">Book Now</a>
@@ -78,39 +66,38 @@
             </div>
         </section>
 
-        <!-- Gallery section -->
         <section class="gallery container">
             <h2>Activity Gallery</h2>
             <div class="gallery-grid">
-                <img src="../Multimedia/gallery1.jpg" alt="Snorkeling Adventure">
-                <img src="../Multimedia/gallery2.jpg" alt="Hiking Trail">
-                <img src="../Multimedia/gallery3.jpg" alt="Beach Sunset">
-                <img src="../Multimedia/gallery4.jpg" alt="Kayaking Excursion">
-                <img src="../Multimedia/gallery5.jpg" alt="Island Culture">
-                <img src="../Multimedia/gallery6.jpg" alt="Resort View">
+                <img src="../Multimedia/gallery1.jpg" alt="Snorkeling Adventure" loading="lazy" class="animate-on-scroll" data-animation="animate__zoomIn">
+                <img src="../Multimedia/gallery2.jpg" alt="Hiking Trail" loading="lazy" class="animate-on-scroll" data-animation="animate__zoomIn">
+                <img src="../Multimedia/gallery3.jpg" alt="Beach Sunset" loading="lazy" class="animate-on-scroll" data-animation="animate__zoomIn">
+                <img src="../Multimedia/gallery4.jpg" alt="Kayaking Excursion" loading="lazy" class="animate-on-scroll" data-animation="animate__zoomIn">
+                <img src="../Multimedia/gallery5.jpg" alt="Island Culture" loading="lazy" class="animate-on-scroll" data-animation="animate__zoomIn">
+                <img src="../Multimedia/gallery6.jpg" alt="Resort View" loading="lazy" class="animate-on-scroll" data-animation="animate__zoomIn">
             </div>
         </section>
 
-        <!-- FAQ section -->
         <section class="faq container">
             <h2>Activity FAQs</h2>
-            <div class="faq-item">
-                <h3>Do I need experience for snorkeling?</h3>
-                <p>No, our guides provide full training for beginners.</p>
-            </div>
-            <div class="faq-item">
-                <h3>Are hiking trails suitable for kids?</h3>
-                <p>Yes, we offer family-friendly trails with varying difficulty.</p>
-            </div>
-            <div class="faq-item">
-                <h3>Can I book activities on arrival?</h3>
-                <p>Yes, but pre-booking ensures availability.</p>
+            <div class="animate-on-scroll" data-animation="animate__fadeInUp">
+                <div class="faq-item">
+                    <h3>Do I need experience for snorkeling?</h3>
+                    <p>No, our guides provide full training for beginners.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Are hiking trails suitable for kids?</h3>
+                    <p>Yes, we offer family-friendly trails with varying difficulty.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I book activities on arrival?</h3>
+                    <p>Yes, but pre-booking ensures availability.</p>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="animate__animated animate__fadeInUp">
+    <footer class="animate-on-scroll" data-animation="animate__fadeInUp">
         <div class="footer-container">
             <div class="footer-section">
                 <h4>About</h4>
@@ -123,9 +110,9 @@
             <div class="footer-section">
                 <h4>Social</h4>
                 <ul>
-                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i> Facebook</a></li>
-                    <li><a href="#"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
-                    <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#!" aria-label="Visit our Facebook page"><i class="fa-brands fa-facebook-f"></i> Facebook</a></li>
+                    <li><a href="#!" aria-label="Visit our Twitter page"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#!" aria-label="Visit our Instagram page"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -141,6 +128,8 @@
             <p>© 2025 Paradise Island. All rights reserved.</p>
         </div>
     </footer>
-    <div class="ball"></div>
+
+    <div class="ball" aria-hidden="true"></div>
+    <script src="script.js"></script>
 </body>
 </html>
