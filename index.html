@@ -1,193 +1,121 @@
 <!DOCTYPE html>
-<!-- Declares the document type as HTML5 -->
 <html lang="en">
 <head>
-    <!-- Sets character encoding to UTF-8 for universal text support -->
     <meta charset="UTF-8">
-    <!-- Ensures responsive design with viewport scaling -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Meta description for search engine optimization -->
     <meta name="description" content="Paradise Island: Your ultimate tropical getaway with stunning beaches, thrilling activities, and luxury resorts.">
-    <!-- Keywords for SEO to improve search rankings -->
     <meta name="keywords" content="Paradise Island, tropical, vacation, beaches, resorts, snorkeling, hiking">
-    <!-- Author metadata for attribution -->
     <meta name="author" content="Vividhan">
-    <!-- Page title displayed in browser tab -->
     <title>Paradise Island - Your Tropical Escape</title>
-    <!-- Favicon for branding in browser tab -->
     <link rel="icon" type="image/png" href="../Multimedia/paradise-icon.png">
-    <!-- Links to external stylesheet for styling -->
     <link rel="stylesheet" href="style.css">
-    <!-- Links to Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!-- Links to Animate.css for animations -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 <body>
-    <!-- Header section for navigation and hero -->
-    <header class="animate__animated animate__fadeInDown">
-        <!-- Navigation bar for site-wide links -->
+    
+    <header class="animate-on-scroll" data-animation="animate__fadeInDown">
         <nav class="navbar">
-            <!-- Logo with link to homepage -->
             <div class="logo"><a href="index.html">Paradise Island</a></div>
-            <!-- Unordered list for navigation links -->
             <ul>
-                <!-- Home page link -->
                 <li><a href="index.html">Home</a></li>
-                <!-- About page link -->
                 <li><a href="about.html">About</a></li>
-                <!-- Activities page link -->
                 <li><a href="activities.html">Activities</a></li>
-                <!-- Booking page link -->
                 <li><a href="booking.html">Book Now</a></li>
-                <!-- Contact page link -->
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
-        <!-- Hero section to attract visitors -->
+        
         <section class="hero" id="home">
-            <!-- Main heading with animation -->
-            <h1 class="animate__animated animate__bounce">Escape to Paradise Island!</h1>
-            <!-- Subheading with delayed animation -->
-            <p class="animate__animated animate__fadeInUp animate__delay-1s">Discover pristine beaches, thrilling adventures, and luxurious resorts in a tropical haven.</p>
-            <!-- Call-to-action button with infinite animation -->
-            <a href="booking.html" class="btn animate__animated animate__pulse animate__infinite">Book Your Adventure</a>
+            <h1 class="animate-on-scroll" data-animation="animate__bounce">Escape to Paradise Island!</h1>
+            <p class="animate-on-scroll" data-animation="animate__fadeInUp">Discover pristine beaches, thrilling adventures, and luxurious resorts in a tropical haven.</p>
+            <a href="booking.html" class="btn animate-on-scroll" data-animation="animate__pulse animate__infinite">Book Your Adventure</a>
         </section>
     </header>
 
-    <!-- Main content container -->
     <main>
-        <!-- Overview section to introduce the island -->
         <section class="overview container">
-            <!-- Section heading -->
             <h2>Discover Paradise Island</h2>
-            <!-- Main image for visual appeal -->
-            <img src="../Multimedia/island-overview.jpg" alt="Paradise Island Beach" class="overview-img">
-            <!-- Article for descriptive text -->
-            <article id="overview-text">
-                <!-- Paragraph describing the island -->
+            <img src="../Multimedia/island-overview.jpg" alt="Paradise Island Beach" class="overview-img animate-on-scroll" data-animation="animate__fadeIn" loading="lazy">
+            <article id="overview-text" class="animate-on-scroll" data-animation="animate__fadeInUp">
                 <p>Paradise Island is a breathtaking tropical destination, renowned for its crystal-clear waters, powdery white beaches, and vibrant coral reefs.</p>
-                <!-- Paragraph highlighting activities -->
                 <p>Whether you seek adventure through snorkeling and hiking or relaxation under swaying palms, our island offers an unforgettable experience for all.</p>
-                <!-- Paragraph inviting visitors -->
                 <p>Immerse yourself in local culture, savor exotic cuisine, and stay in world-class resorts designed for comfort and luxury.</p>
             </article>
         </section>
 
-        <!-- Featured Activities section -->
         <section class="activities container">
-            <!-- Section heading -->
             <h2>Exciting Activities Await</h2>
-            <!-- Flex container for activity cards -->
             <div class="activity-grid">
-                <!-- Activity card for snorkeling -->
-                <div class="activity-card animate__animated animate__zoomIn">
-                    <!-- Icon for visual representation -->
+                <div class="activity-card animate-on-scroll" data-animation="animate__zoomIn">
                     <i class="fas fa-water"></i>
-                    <!-- Activity title -->
                     <h3>Snorkeling</h3>
-                    <!-- Activity description -->
                     <p>Dive into turquoise waters and explore vibrant coral reefs teeming with marine life.</p>
-                    <!-- Link to activities page -->
                     <a href="activities.html" class="btn">Explore Now</a>
                 </div>
-                <!-- Activity card for relaxation -->
-                <div class="activity-card animate__animated animate__zoomIn animate__delay-1s">
-                    <!-- Icon -->
+                <div class="activity-card animate-on-scroll" data-animation="animate__zoomIn">
                     <i class="fas fa-umbrella-beach"></i>
-                    <!-- Activity title -->
                     <h3>Beach Relaxation</h3>
-                    <!-- Activity description -->
                     <p>Unwind on soft sands with a tropical cocktail in hand.</p>
-                    <!-- Link to activities page -->
                     <a href="activities.html" class="btn">Explore Now</a>
                 </div>
-                <!-- Activity card for hiking -->
-                <div class="activity-card animate__animated animate__zoomIn animate__delay-2s">
-                    <!-- Icon -->
+                <div class="activity-card animate-on-scroll" data-animation="animate__zoomIn">
                     <i class="fas fa-hiking"></i>
-                    <!-- Activity title -->
                     <h3>Hiking</h3>
-                    <!-- Activity description -->
                     <p>Trek through lush rainforests with stunning panoramic views.</p>
-                    <!-- Link to activities page -->
                     <a href="activities.html" class="btn">Explore Now</a>
                 </div>
             </div>
         </section>
 
-        <!-- Testimonials section -->
         <section class="testimonials container">
-            <!-- Section heading -->
             <h2>Guest Experiences</h2>
-            <!-- Grid container for testimonials -->
             <div class="testimonial-grid">
-                <!-- Testimonial card -->
-                <div class="testimonial-card">
-                    <!-- Guest quote -->
+                <div class="testimonial-card animate-on-scroll" data-animation="animate__fadeInLeft">
                     <p>"The best vacation ever! The beaches were stunning, and the staff were incredibly welcoming."</p>
-                    <!-- Guest name -->
                     <h4>- Sarah Thompson</h4>
                 </div>
-                <!-- Testimonial card -->
-                <div class="testimonial-card">
-                    <!-- Guest quote -->
+                <div class="testimonial-card animate-on-scroll" data-animation="animate__fadeInUp">
                     <p>"Snorkeling in the coral reefs was a highlight. Paradise Island is a must-visit!"</p>
-                    <!-- Guest name -->
                     <h4>- Michael Lee</h4>
                 </div>
-                <!-- Testimonial card -->
-                <div class="testimonial-card">
-                    <!-- Guest quote -->
+                <div class="testimonial-card animate-on-scroll" data-animation="animate__fadeInRight">
                     <p>"Perfect for families! The kids loved the activities, and we enjoyed the relaxation."</p>
-                    <!-- Guest name -->
                     <h4>- Emma Davis</h4>
                 </div>
             </div>
         </section>
 
-        <!-- Call-to-Action section -->
         <section class="cta container">
-            <!-- Section heading -->
             <h2>Plan Your Dream Vacation</h2>
-            <!-- Encouraging text -->
             <p>Join thousands of travelers who have discovered the magic of Paradise Island.</p>
-            <!-- CTA button -->
             <a href="booking.html" class="btn">Book Now</a>
         </section>
     </main>
 
-    <!-- Footer section -->
-    <footer class="animate__animated animate__fadeInUp">
-        <!-- Footer content container -->
+    <footer class="animate-on-scroll" data-animation="animate__fadeInUp">
         <div class="footer-container">
-            <!-- About section -->
             <div class="footer-section">
-                <!-- Section title -->
                 <h4>About</h4>
-                <!-- List of links -->
                 <ul>
                     <li><a href="about.html">About Us</a></li>
                     <li><a href="contact.html">Contact</a></li>
                     <li><a href="tel:+919442211279">Phone</a></li>
                 </ul>
             </div>
-            <!-- Social section -->
             <div class="footer-section">
-                <!-- Section title -->
                 <h4>Social</h4>
-                <!-- List of social media links -->
                 <ul>
-                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i> Facebook</a></li>
-                    <li><a href="#"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
-                    <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#!" aria-label="Visit our Facebook page"><i class="fa-brands fa-facebook-f"></i> Facebook</a></li>
+                    <li><a href="#!" aria-label="Visit our Twitter page"><i class="fa-brands fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#!" aria-label="Visit our Instagram page"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
                 </ul>
             </div>
-            <!-- Explore section -->
             <div class="footer-section">
-                <!-- Section title -->
                 <h4>Explore</h4>
-                <!-- List of links -->
                 <ul>
                     <li><a href="activities.html">Activities</a></li>
                     <li><a href="booking.html">Book Now</a></li>
@@ -195,12 +123,13 @@
                 </ul>
             </div>
         </div>
-        <!-- Footer bottom with copyright -->
         <div class="footer-bottom">
             <p>© 2025 Paradise Island. All rights reserved.</p>
         </div>
     </footer>
-    <!-- Decorative animated ball -->
-    <div class="ball"></div>
+
+    <div class="ball" aria-hidden="true"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>
